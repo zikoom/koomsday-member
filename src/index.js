@@ -16,6 +16,9 @@ const tempData = {
 
 
 
+router.get('/', ctx => {
+  ctx.body = {ok: true, users: '루트'}
+})
 router.get('/api/users', ctx => {
   ctx.body = {ok: true, users: tempData.users}
 })
