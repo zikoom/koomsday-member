@@ -1,0 +1,30 @@
+{
+  "name": "koomsday-member",
+  "version": "1.0.0",
+  "description": "쿰스데이 멤버",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src",
+    "dev": "nodemon --watch src/ src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zikoom/koomsday-member.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zikoom/koomsday-member/issues"
+  },
+  "homepage": "https://github.com/zikoom/koomsday-member#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  },
+  "dependencies": {
+    "@koa/cors": "^4.0.0",
+    "@koa/router": "^12.0.0",
+    "koa": "^2.14.1",
+    "koa-bodyparser": "^4.4.0"
+  }
+}
