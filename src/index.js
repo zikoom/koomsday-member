@@ -3,6 +3,8 @@
  * wwww.koomsday.com/member 로 가는 요청을 이 서버가 처리함
  */
 
+const rootPath = '/member'
+
 
 const Koa = require('koa');
 const Router = require('@koa/router')
