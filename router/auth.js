@@ -9,7 +9,7 @@ router.get('/googleOauthURL', ctx => {
   logger.info(`/googleOauthURL. url: ${url}`);
   ctx.status = 202;
   ctx.body = {
-    URL: url
+    url: url
   }
 })
 
