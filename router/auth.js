@@ -15,10 +15,8 @@ router.get('/googleOauthURL', ctx => {
 
 router.get('/oauth2callback', ctx => {
   logger.info('/oauth2callback.');
-  console.log('Object.keys(ctx.request.query): ', Object.keys(ctx.request.query))
-  console.log('ctx.request.query: ', ctx.request.query);
 
-  ctx.response.redirect('https://www.naver.com')
+  ctx.body = ctx.request.query.code;
 })
 
 
