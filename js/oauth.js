@@ -31,4 +31,5 @@ const getAuthURL = () => {
   })
 }
 
-module.exports = getAuthURL;
+module.exports.oauth2Client = oauth2Client;
+module.exports.getAuthURL = getAuthURL;
