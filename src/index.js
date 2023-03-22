@@ -20,31 +20,14 @@ const logger = require('../config/winston')
 
 app.use(cors());
 
-const tempData = {
-  users: ['ㅁㅁㅁㅁ', 'ㅁㄴㅇㄹ', 'ㅁㄴㅇㄹ'],
-  points: ['10','123123', '551']
-};
 
 
-
-router.get('/', (ctx) => {
-  logger.info(`GET / request: ${ ctx.request.originalUrl}`)
-  ctx.body = {ok: true, users: '루트'}
-})
-router.get('/api/users', ctx => {
-  logger.info('GET /api/users')
-  ctx.body = {ok: true, users: tempData.users}
-})
-
-router.get('/:one/:two/:three/:four', (ctx) => {
-  const {one, two, three, four} = ctx.params
-  logger.info(`GET for wildcard route(/:one/:two/:three/:four) one: ${one}, two: ${two}, three: ${three}, for:${four}`)
-  ctx.body = {ok: true, users: '루트'}
-})
-
-const port = 9898;
+const globalRouter = require('../router/index')
+router.use(rootPath, globalRouter.routes());
 app.use(bodyParser()).use(router.routes());
 
+
+const port = 9898;
 app.listen(port, () => {
   console.log('koomsday member server on');
 })
