@@ -13,6 +13,10 @@ router.get('/googleOauthURL', ctx => {
   }
 })
 
+router.get('/oauth2callback', ctx => {
+  logger.info('/oauth2callback.');
+})
+
 
 
 module.exports = router;

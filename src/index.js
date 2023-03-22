@@ -2,6 +2,14 @@
  * koomsday member 서버
  * wwww.koomsday.com/member 로 가는 요청을 이 서버가 처리함
  */
+const logger = require('../config/winston')
+/**
+ * global util
+ */
+
+global._logger = logger;
+
+///////////////////////////////
 
 const rootPath = '/member'
 
@@ -15,7 +23,7 @@ const app = new Koa();
 const router = new Router();
 const cors = require('@koa/cors')
 
-const logger = require('../config/winston')
+
 
 
 app.use(cors());
