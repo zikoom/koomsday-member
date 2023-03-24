@@ -2,12 +2,21 @@
  * koomsday member 서버
  * wwww.koomsday.com/member 로 가는 요청을 이 서버가 처리함
  */
+
+const path = require('path');
+const fs = require('fs');
+
 const logger = require('../config/winston')
+
+const configPath = path.resolve(__dirname, '../', 'config.json');
+const {PATH_TYPE} = JSON.parse(fs.readFileSync(configPath));
+
 /**
  * global util
  */
 
 global._logger = logger;
+global._PATH_TYPE = PATH_TYPE;
 
 ///////////////////////////////
 
@@ -23,12 +32,7 @@ const app = new Koa();
 const router = new Router();
 const cors = require('@koa/cors')
 
-
-
-
 app.use(cors());
-
-
 
 const globalRouter = require('../router/index')
 router.use(rootPath, globalRouter.routes());
