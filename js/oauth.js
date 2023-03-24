@@ -12,7 +12,6 @@ console.log('process.cwd(): ', process.cwd())
 const {web} = JSON.parse(fs.readFileSync(oauthJsonPath))
 const {client_id, client_secret, redirect_uris} = web;
 
-
 const oauth2Client = new google.auth.OAuth2(
   client_id,
   client_secret,
