@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const {google} = require('googleapis');
-const oauthJsonPath = path.resolve(__dirname, '../', './secret', '__client_secret.json');
+const oauthJsonPath = path.resolve(__dirname, '../', './secret', 'client_secret.json');
 
 const {web} = JSON.parse(fs.readFileSync(oauthJsonPath))
 const {client_id, client_secret, redirect_uris} = web;
