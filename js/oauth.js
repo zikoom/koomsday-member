@@ -1,16 +1,14 @@
 const fs = require('fs');
 const path = require('path');
 const {google} = require('googleapis');
-
-// const oauthJsonPath = path.resolve(process.cwd(), 'secret', 'client_secret.json');
 const oauthJsonPath = path.resolve(__dirname, '../', './secret', '__client_secret.json');
-console.log('oauthJsonPath: ',oauthJsonPath);
-console.log('process.cwd(): ', process.cwd())
 
-// const {installed} = JSON.parse(fs.readFileSync(oauthJsonPath))
-// const {client_id, client_secret, redirect_uris} = installed;
 const {web} = JSON.parse(fs.readFileSync(oauthJsonPath))
 const {client_id, client_secret, redirect_uris} = web;
+
+console.log('redirect_uris: ', redirect_uris);
+
+
 
 const oauth2Client = new google.auth.OAuth2(
   client_id,
@@ -22,6 +20,11 @@ const scopes = [
   'https://www.googleapis.com/auth/userinfo.profile'
 ];
 
+
+/**
+ *
+ * async function
+ */
 const getAuthURL = () => {
   return oauth2Client.generateAuthUrl({
     access_type: 'offline',

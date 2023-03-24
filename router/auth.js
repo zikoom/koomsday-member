@@ -3,6 +3,7 @@ const router = new Router();
 const logger = require('../config/winston')
 
 const {oauth2Client ,getAuthURL} = require('../js/oauth')
+getAuthURL();
 
 router.get('/googleOauthURL', ctx => {
   const url = getAuthURL();
