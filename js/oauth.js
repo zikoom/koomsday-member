@@ -3,7 +3,7 @@ const path = require('path');
 const {google} = require('googleapis');
 
 // const oauthJsonPath = path.resolve(process.cwd(), 'secret', 'client_secret.json');
-const oauthJsonPath = path.resolve(process.cwd(), 'secret', '__client_secret.json');
+const oauthJsonPath = path.resolve(__dirname, '../', './secret', '__config.json');
 console.log('oauthJsonPath: ',oauthJsonPath);
 console.log('process.cwd(): ', process.cwd())
 
