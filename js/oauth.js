@@ -13,7 +13,7 @@ const {client_id, client_secret, redirect_uris} = web;
 
 const get_PATH_TYPE = () => {
   if(global._PATH_TYPE === 'DEV'){
-    return  redirect_uris.find(el => el.includes('localhost'));
+    return  redirect_uris.find(el => el.includes('localhost:9898'));
   }
   else if(global._PATH_TYPE === 'LIVE'){
     return  redirect_uris.find(el => el.includes('koomsday'))
@@ -33,7 +33,8 @@ const oauth2Client = new google.auth.OAuth2(
 );
 
 const scopes = [
-  'https://www.googleapis.com/auth/userinfo.profile'
+  'https://www.googleapis.com/auth/userinfo.profile',
+  // 'openid'
 ];
 
 
