@@ -1,5 +1,5 @@
 {
-  "PATH_TYPE": "LIVE",
+  "PATH_TYPE": "DEV",
   "API_MEMBER_DOMAIN" : "www.koomsday.com",
 
   "PATH_DEV": {

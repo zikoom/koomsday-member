@@ -2,6 +2,8 @@ const Router = require('@koa/router');
 const router = new Router();
 const logger = require('../config/winston')
 
+const {google} = require('googleapis');
+
 const {oauth2Client ,getAuthURL} = require('../js/oauth')
 
 /**
@@ -35,7 +37,18 @@ router.get('/oauth2callback', async (ctx) => {
 
 router.post('/userinfo', async (ctx) => {
   logger.info('post /userinfo.')
-  ctx.body = 'test';
+  const {authCode} = ctx.request.body;
+  try {
+    const {tokens} = await oauth2Client.getToken(authCode);
+    oauth2Client.setCredentials({...tokens})
+
+    const oauth2 = google.oauth2({auth: oauth2Client, version: 'v2'})
+    const res = await oauth2.userinfo.get();
+    ctx.body = res.data;
+  } catch (error) {
+    logger.error(`post /userinfo ${error}`);
+  }
+
 })
 
 module.exports = router;
