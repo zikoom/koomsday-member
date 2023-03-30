@@ -9,7 +9,8 @@ const fs = require('fs');
 const logger = require('../config/winston')
 
 const configPath = path.resolve(__dirname, '../', 'config.json');
-const {PATH_TYPE} = JSON.parse(fs.readFileSync(configPath));
+const config = JSON.parse(fs.readFileSync(configPath));
+const {PATH_TYPE} = config;
 
 /**
  * global util
@@ -17,6 +18,8 @@ const {PATH_TYPE} = JSON.parse(fs.readFileSync(configPath));
 
 global._logger = logger;
 global._PATH_TYPE = PATH_TYPE;
+global._CONFIG = config[`PATH_${PATH_TYPE}`]
+
 
 ///////////////////////////////
 

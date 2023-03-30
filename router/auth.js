@@ -18,19 +18,18 @@ router.get('/googleOauthURL', ctx => {
 })
 
 router.get('/oauth2callback', async (ctx) => {
-  const delay = (ms) => {
-    return new Promise((resovle) => {
-      setTimeout(() => {
-        resovle()
-      }, ms);
-    })
-  }
-  console.log(ctx.request.query);
-  let { tokens } = await oauth2Client.getToken(ctx.request.query.code);
-  console.log('tokens: ', tokens);
 
-  await delay(3000)
-  ctx.body = '딜레이'
+  logger.info('get /oauth2callback.')
+
+  try {
+    const {code} = ctx.request.query;
+    if(!code) throw new Error('unvaild authcode');
+
+
+  } catch (error) {
+    logger.error(`get /oauth2callback error:${error}`)
+    ctx.status = 500;
+  }
 })
 
 module.exports = router;
