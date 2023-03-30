@@ -24,12 +24,18 @@ router.get('/oauth2callback', async (ctx) => {
   try {
     const {code} = ctx.request.query;
     if(!code) throw new Error('unvaild authcode');
+    ctx.redirect(`${global._CONFIG.WEB_DOMAIN}/auth/oauth2callback?code=${code}`)
 
 
   } catch (error) {
     logger.error(`get /oauth2callback error:${error}`)
     ctx.status = 500;
   }
+})
+
+router.post('/userinfo', async (ctx) => {
+  logger.info('post /userinfo.')
+  ctx.body = 'test';
 })
 
 module.exports = router;

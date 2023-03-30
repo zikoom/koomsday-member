@@ -1,5 +1,5 @@
 {
-  "PATH_TYPE": "DEV",
+  "PATH_TYPE": "LIVE",
   "API_MEMBER_DOMAIN" : "www.koomsday.com",
 
   "PATH_DEV": {
@@ -7,6 +7,6 @@
   },
 
   "PATH_LIVE": {
-    "WEB_DOMAIN": "https://koomsday.netlify.app/"
+    "WEB_DOMAIN": "https://koomsday.netlify.app"
   }
 }
