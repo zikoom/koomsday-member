@@ -12,6 +12,7 @@ const configPath = path.resolve(__dirname, '../', 'config.json');
 const config = JSON.parse(fs.readFileSync(configPath));
 const {PATH_TYPE} = config;
 
+
 /**
  * global util
  */
@@ -20,7 +21,28 @@ global._logger = logger;
 global._PATH_TYPE = PATH_TYPE;
 global._CONFIG = config[`PATH_${PATH_TYPE}`]
 
+/**
+ * global util ( config ) 로딩 이후에 나머지 로딩
+ */
 
+/**
+ * db 커넥션
+ */
+const conn = require('../database/db_connection')
+let db = null;
+(async function(){
+  try {
+    db = await conn();
+    global._db = db;
+    const querys = require('../database/query.js')
+    const {test} = querys;
+    const res = await db.execute('SELECT * FROM user.userinfo');
+    console.log('res: ', res);
+
+  } catch (error) {
+    console.log('db connection error: ', error);
+  }
+})()
 ///////////////////////////////
 
 const rootPath = '/member'
